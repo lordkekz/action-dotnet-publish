@@ -6,9 +6,10 @@ branding:
   icon: package
 
 inputs:
-  project-path:
+  path:
     description: Path to the project to publish.
-    required: true
+    required: false
+    default: .
   output-dir:
     description: Directory where all packages will be put (default value is 'packages').
     required: false
@@ -32,4 +33,4 @@ runs:
         if [[ '${{ inputs.skip-build }}' == "true" ]] ; then
           ARGS="${ARGS} --no-build"
         fi
-        dotnet publish '${{ inputs.project-path }}' ${ARGS}
+        dotnet publish '${{ inputs.path }}' ${ARGS}
