@@ -6,9 +6,10 @@ branding:
   icon: package
 
 inputs:
-  project-name:
-    description: Name of the project to publish.
-    required: true
+  path:
+    description: Path to the project to publish.
+    required: false
+    default: .
   output-dir:
     description: Directory where all packages will be put (default value is 'packages').
     required: false
