@@ -28,8 +28,8 @@ runs:
     - name: Create Nuget packages
       shell: bash
       run: |
-        ARGS='-o "${{ inputs.output-dir }}" -c "${{ inputs.build-configuration }}"'
+        ARGS=""
         if [[ '${{ inputs.skip-build }}' == "true" ]] ; then
           ARGS="${ARGS} --no-build"
         fi
-        dotnet publish '${{ inputs.project-name }}' ${ARGS}
+        dotnet publish '${{ inputs.project-name }}' -o '${{ inputs.output-dir }}' -c '${{ inputs.build-configuration }}' ${ARGS}
