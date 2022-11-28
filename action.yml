@@ -34,9 +34,9 @@ runs:
           if [[ '${{ inputs.skip-build }}' == "true" ]] ; then
             ARGS="${ARGS} --no-build"
           fi
-          while read P ; do
+          echo '${{ inputs.path }}' | while read P ; do
             if [ -z "${P}" ] ; then
               continue
             fi
             dotnet publish "${P}" -o '${{ inputs.output-dir }}' -c '${{ inputs.build-configuration }}' ${ARGS}
-          done < echo '${{ inputs.path }}'
+          done
