@@ -35,5 +35,8 @@ runs:
             ARGS="${ARGS} --no-build"
           fi
           while read P ; do
+            if [ -z "${P}" ] ; then
+              continue
+            fi
             dotnet publish "${P}" -o '${{ inputs.output-dir }}' -c '${{ inputs.build-configuration }}' ${ARGS}
-          done < echo "${{ inputs.path }}"
+          done < echo '${{ inputs.path }}'
