@@ -1,4 +1,4 @@
-name: Dotnet Publish
+name: Dotnet Publish II
 description: Create the packeged output for a .NET Core project.
 
 branding:
@@ -22,6 +22,10 @@ inputs:
     description: Whether to skip the build using the --no-build flag (default value is 'true').
     required: false
     default: "true"
+  args:
+    description: Any further args for dotnet publish.
+    required: false
+    default: ""
 
 runs:
   using: composite
@@ -30,7 +34,7 @@ runs:
       uses: EasyDesk/action-dotnet@v1
       with:
         script: |
-          ARGS=""
+          ARGS=${{ inputs.args }}
           if [[ '${{ inputs.skip-build }}' == "true" ]] ; then
             ARGS="${ARGS} --no-build"
           fi
