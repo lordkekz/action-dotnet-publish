@@ -34,7 +34,7 @@ runs:
       uses: EasyDesk/action-dotnet@v1
       with:
         script: |
-          ARGS=${{ inputs.args }}
+          ARGS='${{ inputs.args }}'
           if [[ '${{ inputs.skip-build }}' == "true" ]] ; then
             ARGS="${ARGS} --no-build"
           fi
